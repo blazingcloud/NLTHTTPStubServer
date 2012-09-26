@@ -76,6 +76,7 @@
     for (NSUInteger i = 0; i < [self.stubResponses count]; i++) {
         NLTHTTPStubResponse *response = [self.stubResponses objectAtIndex:i];
         NSURL *url = [NSURL URLWithString:response.path];
+        [response retain];
         if([[url relativePath] isEqualToString:path] && [[response httpMethod] isEqualToString:method]){
             [self.stubResponses removeObject:response];
             return (NLTHTTPStubResponse<HTTPResponse>*)response;
